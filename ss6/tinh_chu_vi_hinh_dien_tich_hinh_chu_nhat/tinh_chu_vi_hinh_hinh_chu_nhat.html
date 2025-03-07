@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chu vi hinh chu nhat</title>
+</head>
+<label for="dai"></label><input id="dai">
+<label for="rong"></label><input id="rong">
+<p id="ketQua"></p>
+<button onClick="chuVi()">Tinh chu vi</button>
+<body>
+   <script>
+       function chuVi() {
+          let dai = +document.getElementById("dai").value;
+          let rong = +document.getElementById("rong").value;
+          let chuVi = 2 * (dai + rong);
+          document.getElementById("ketQua").innerText = "Kết quả là: "+ chuVi;
+       }
+   </script>
+</body>
+</html>
