@@ -2,20 +2,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chu vi hinh chu nhat</title>
+    <title>Chu vi và diện tích hình chữ nhật</title>
 </head>
-<label for="dai"></label><input id="dai">
-<label for="rong"></label><input id="rong">
-<p id="ketQua"></p>
-<button onClick="chuVi()">Tinh chu vi</button>
 <body>
-   <script>
-       function chuVi() {
-          let dai = +document.getElementById("dai").value;
-          let rong = +document.getElementById("rong").value;
-          let chuVi = 2 * (dai + rong);
-          document.getElementById("ketQua").innerText = "Kết quả là: "+ chuVi;
-       }
-   </script>
+Chiều dài: <input id="dai" type="number">
+Chiều rộng: <input id="rong" type="number">
+
+<br><br>
+
+<button onclick="tinh()">Tính chu vi và diện tích</button>
+
+<p id="chuVi"></p>
+<p id="dienTich"></p>
+
+<script>
+    function tinh() {
+        var dai = document.getElementById("dai").value;
+        var rong = document.getElementById("rong").value;
+
+        var chuVi = 2 * dai + rong;
+        var dienTich = dai * rong;
+
+        document.getElementById("chuVi").innerText = "Chu vi là: " + chuVi;
+        document.getElementById("dienTich").innerText = "Diện tích là: " + dienTich;
+    }
+</script>
 </body>
 </html>
