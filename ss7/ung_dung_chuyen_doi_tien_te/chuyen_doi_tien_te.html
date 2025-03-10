@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chuyen doi tien te</title>
+</head>
+<body>
+<div class="container">
+  <label for="num">Amount:</label>
+  <input id="num" type="text">
+  <label for="from">From Currency:</label>
+  <select id="from" name="from">
+    <option value="23000">VND</option>
+    <option value="1">USD</option>
+  </select>
+  <label for="to">To Currency:</label>
+  <select id="to" name="to">
+    <option value="23000">VND</option>
+    <option value="1">USD</option>
+  </select>
+  <p id="result"></p>
+  <button onclick="convert()">Convert</button>
+  <script>
+      function convert() {
+        let num = parseFloat(document.getElementById("num").value);
+        let from = document.getElementById("from").value;
+        let to = document.getElementById("to").value;
+
+        let result = to * num /from;
+        document.getElementById("result").innerText = `So tien la ${result} $`;
+      }
+  </script>
+</div>
+</body>
+</html>
