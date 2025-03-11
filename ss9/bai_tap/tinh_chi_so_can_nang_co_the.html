@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<label><h1>Tính chỉ số cân nặng</h1></label>
+<button onclick="check()">Kiểm tra</button>
+<p id="ketQua"></p>
+<script>
+    function check() {
+        let weight = +prompt("Enter weight");
+        let height = +prompt("Enter height");
+        let bmi = weight / (height ^ 2);
+
+        if (bmi < 18.5) {
+            document.getElementById("ketQua").innerText = "Underweight";
+        } else if (bmi < 25.0) {
+            document.getElementById("ketQua").innerText = "Normal";
+        } else if (bmi < 30.0) {
+            document.getElementById("ketQua").innerText = "Overweight";
+        } else {
+            document.getElementById("ketQua").innerText = "Obese";
+        }
+    }
+</script>
+</body>
+</html>
