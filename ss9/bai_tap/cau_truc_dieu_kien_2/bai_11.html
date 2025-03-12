@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let luong = +prompt("Nhap luong");
+  let thue;
+  if(luong <= 5000000) {
+    thue = 0.05 * luong;
+  }else if (luong <= 10000000) {
+    thue = luong * 0.1 - 250000;
+  }else {
+    thue = luong * 0.15 - 750000;
+  }
+  alert(`Thue thu nhap ca nhan: ${thue}`);
+</script>
+</body>
+</html>

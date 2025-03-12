@@ -5,6 +5,23 @@
     <title>Title</title>
 </head>
 <body>
-
+<script>
+    let soDien = +prompt("Nhap so dien");
+    let bac1 = 1.678;
+    let bac2 = 1.734;
+    let bac3 = 2.014;
+    let tienDien;
+    if (soDien <= 50) {
+        // Bac 1
+       tienDien = soDien * bac1;
+    }else if (soDien <= 100) {
+        // Bac 2
+        tienDien = 50 * bac1 + (soDien - 50) * bac2;
+    }else {
+        // bac 3
+        tienDien = 50 * bac1 + 50 * bac2 + (soDien -100) * bac3;
+    }
+    alert("Tien dien: " + tienDien);
+</script>
 </body>
 </html>

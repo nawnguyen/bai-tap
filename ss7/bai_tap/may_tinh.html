@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="number" id="number1" placeholder="Nhap so ">
+<input type="number" id="number2" placeholder="Nhap so "><br><br>
+<button type="button" onclick="addition()">+</button>
+<button type="button" onclick="subtraction()">-</button>
+<button type="button" onclick="multiplication()">*</button>
+<button type="button" onclick="division()">/</button>
+<p id="result"></p>
+<script>
+ function addition() {
+   let number1 = parseFloat(document.getElementById("number1").value);
+   let number2 = parseFloat(document.getElementById("number2").value);
+    let addResult = number1 + number2;
+    document.getElementById("result").innerText= `Dap an la: ${addResult}`
+ }
+ function subtraction() {
+   let number1 = parseFloat(document.getElementById("number1").value);
+   let number2 = parseFloat(document.getElementById("number2").value);
+   let resultSub = number1 - number2;
+   document.getElementById("result").innerText = `Dap an la: ${resultSub}`
+ }
+ function multiplication() {
+   let number1 = parseFloat(document.getElementById("number1").value);
+   let number2 = parseFloat(document.getElementById("number2").value);
+   let resultMul = number1 * number2;
+   document.getElementById("result").innerText = `Hien thi ket qua ${resultMul}`
+ }
+ function division() {
+   let number1 = parseFloat(document.getElementById("number1").value);
+   let number2 = parseFloat(document.getElementById("number2").value);
+   let resultDiv = number1 / number2;
+   document.getElementById("result").innerText = `Ket qua: ${resultDiv}`
+ }
+</script>
+</body>
+</html>
