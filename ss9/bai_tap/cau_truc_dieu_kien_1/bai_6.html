@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let tongDoanhSo = +prompt("Nhap doanh so");
+    if (tongDoanhSo < 2000000) {
+        hoaHong = tongDoanhSo * 0.03;
+        alert("Tien hoa hong: " + hoaHong + "VND");
+    } else if (tongDoanhSo <= 2000000 && tongDoanhSo <= 5000000) {
+        hoaHong = tongDoanhSo * 0.05;
+        alert("Tien hoa hong: " + hoaHong + "VND");
+    } else
+        hoaHong = tongDoanhSo * 0.1;
+    alert("Tien hoa hong: " + hoaHong + "VND");
+</script>
+</body>
+</html>

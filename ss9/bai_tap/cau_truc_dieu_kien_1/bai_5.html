@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let diemKiemTra = +prompt("Diem kiem tra");
+  let diemGiuaKy = +prompt("Diem giua ky");
+  let diemCuoiKy = +prompt("Diem cuoi ky");
+  let tongDiem = (diemKiemTra * 0.2) + (diemGiuaKy * 0.3) + (diemCuoiKy * 0.5);
+  if (tongDiem >= 9) {
+    alert("Gioi");
+  }else if (tongDiem >= 7) {
+    alert("Kha");
+  }else if (tongDiem >= 5) {
+    alert("Trung binh");
+  }else {
+    alert("Yeu")
+  }
+</script>
+</body>
+</html>
