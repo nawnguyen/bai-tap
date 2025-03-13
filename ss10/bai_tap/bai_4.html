@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let f1 = 0;
+    let f2 = 1;
+    let fn;
+    for (let i = 0; i < 18; i++) {
+        fn = f2 + f1;
+        f1 = f2;
+        f2 = fn;
+        if (fn % 5 === 0) {
+            document.write("So chia het cho 5 trong day fibonacci la: " + fn);
+            break;
+        }
+    }</script>
+</body>
+</html>
