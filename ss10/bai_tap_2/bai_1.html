@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let f1 = 0;
+    let f2 = 1;
+    let fn;
+    document.write(`${f1}; ${f2}`);
+    for (let i = 0; i < 18; i++) {
+        fn = f2 + f1;
+        document.write(";" + fn);
+        f1 = f2;
+        f2 = fn;
+    }
+</script>
+</body>
+</html>
