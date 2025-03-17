@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+  let array = [2,4,5,7,9,6,10,11,12,25];
+  let v = +prompt('Nhap so');
+  let isExist = false;
+  for(let i = 0; i < array.length; i++){
+    if(array[i] === v){
+      isExist = true;
+      array.splice(i, 1);
+      array.push(0);
+    }
+  }
+  if(isExist){
+    document.write('array: ' + array);
+  }
+</script>
+</body>
+</html>

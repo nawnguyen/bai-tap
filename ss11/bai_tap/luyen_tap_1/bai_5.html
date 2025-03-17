@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let nguyenAm = ['e', 'u', 'o', 'a', 'i'];
+    let chuoi = prompt('Nhap chuoi');
+    let array = chuoi.split('');
+    let count = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (nguyenAm.includes(array[i])) {
+            count++;
+        }
+    }
+    document.write(count);
+</script>
+</body>
+</html>
