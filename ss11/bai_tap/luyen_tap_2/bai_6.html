@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let array = [1, '-', 2, '-', 4, '-', 6,];
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === '-') {
+            array.splice(i, 1, '_');
+        }
+    }
+    document.write(array);
+</script>
+</body>
+</html>

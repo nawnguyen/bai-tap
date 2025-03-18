@@ -6,13 +6,13 @@
 </head>
 <body>
 <script>
- let array = [3,5,7,1,9,10,13];
- for(let i = 0; i < array.length/2; i++){
-    let temporary = array[i];
-    array[i] = array[array.length -1 - i];
-    array[array.length - 1 -i] = temporary;
- }
- document.write(array);
+    let array = [3, 5, 7, 1, 9, 10, 13];
+    for (let i = 0; i < array.length / 2; i++) {
+        let temporary = array[i];
+        array[i] = array[array.length - 1 - i];
+        array[array.length - 1 - i] = temporary;
+    }
+    document.write(array);
 </script>
 </body>
 </html>

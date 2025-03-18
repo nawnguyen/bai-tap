@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let str1 = prompt('Nhap vao mo chuoi');
+    let str2 = prompt('Nhap vao mot chuoi');
+    let array1 = str1.split('');
+    let array2 = str2.split('');
+    let check = true;
+    if (array1.length === array2.length) {
+        for (i = 0; i < array1.length; i++) {
+            if (array1[i] !== array2[i]) {
+                check = false;
+            }
+        }
+    } else {
+        check = false;
+    }
+    if (check) {
+        document.write('Giong nhau');
+    } else {
+        document.write('Khong giong nhau');
+    }
+</script>
+</body>
+</html>
