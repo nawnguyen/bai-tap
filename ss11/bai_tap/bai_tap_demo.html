@@ -9,9 +9,9 @@
     let length;
     do {
         length = +prompt("Nhập độ dài của mảng");
-    }while(length <= 0 || length > 20)
+    } while (length <= 0 || length > 20)
     let array = new Array(length);
-    for(i = 0; i< array.length;i++ ){
+    for (i = 0; i < array.length; i++) {
         array[i] = +prompt("Nhập i: ");
     }
     document.write(array);
