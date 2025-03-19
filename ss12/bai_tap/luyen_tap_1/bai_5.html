@@ -12,16 +12,17 @@
     function findStar(star) {
         let check = false;
         for (let i = 0; i < array1.length; i++) {
-            if(array1[i] === star){
+            if (array1[i] === star) {
                 return array2[i];
                 check = true;
                 break;
             }
         }
-        if(!check){
+        if (!check) {
             return 'Khong tim thay';
         }
     }
+
     let str = prompt('Nhap ten ngoi sao');
     alert(findStar(str));
 </script>
