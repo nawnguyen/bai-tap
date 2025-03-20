@@ -7,6 +7,7 @@
 <body>
 <script>
     let check = true;
+    let students = ['Vương', 'Nam', 'Vĩnh'];
     while (check) {
         let option = +prompt(
             "---------Quản lí sinh viên----------\n" +
@@ -17,20 +18,47 @@
             "4. Kết thúc chương trình\n");
         switch (option) {
             case 1:
-                alert("Chức năng hiển thị danh sách sinh viên");
+                showList();
                 break;
             case 2:
-                alert("Chức năng thêm mới sinh viên");
+                addStudent();
                 break
             case 3:
-                alert("Chức năng xóa sinh viên");
+                deleteStudent();
                 break;
             case 4:
                 let exit = (confirm("Bạn muốn thoát chương trình ?"));
                 if (exit) {
-                    check=false;
+                    check = false;
                 }
         }
+    }
+
+    function showList() {
+        let str = 'Danh sách sinh viên: \n';
+
+        for (let i = 0; i < students.length; i++) {
+            str += (i + 1) + '. ' + students[i] + '\n';
+        }
+        alert(str);
+    }
+
+    function addStudent() {
+        let name = prompt('Nhập tên');
+        students.push(name);
+        showList();
+    }
+
+    function deleteStudent() {
+        let str = 'Danh sách sinh viên: \n';
+
+        for (let i = 0; i < students.length; i++) {
+            str += (i + 1) + '. ' + students[i] + '\n';
+        }
+        str += 'Chọn sinh viên cần xóa';
+        let index = +prompt(str);
+        students.splice(index - 1, 1);
+        showList();
     }
 </script>
 </body>
