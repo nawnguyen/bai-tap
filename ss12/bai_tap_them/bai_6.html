@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function checkString(string) {
+        let array = string.toLowerCase().split('');
+        let returnArray = [];
+        let array2 = ['a', 'u', 'o', 'e', 'i'];
+        for (let i = 0; i < string.length; i++) {
+            if (array2.includes(array[i]) && !returnArray.includes(array[i])) {
+                returnArray.push(array[i]);
+            }
+        }
+        return returnArray;
+    }
+
+    alert(checkString('hello'));
+</script>
+</body>
+</html>

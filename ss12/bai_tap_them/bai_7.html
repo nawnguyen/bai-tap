@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function kiemTraTamGiac(x, y, z) {
+        if (x + y > z && x + z > y && y + z > x) {
+            if(x*x + y*y === z*z || x*x + z*z === y*y || y*y + z*z === x*x){
+                return 'x,y,z la 3 canh 1 tam giac vuong';
+            }else{
+                return 'x,y,z la 3 canh 1 tam giac';
+            }
+        }else{
+            return "x,y,z khong phai la canh cua 1 tam giac";
+        }
+    }
+    alert(kiemTraTamGiac(1,2,4));
+</script>
+</body>
+</html>
