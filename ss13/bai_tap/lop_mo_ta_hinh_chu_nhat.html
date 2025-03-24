@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="myCanvas" width="1368px" height="768px" style="border:1px solid #d3d3d3;"></canvas>
+    <script>
+        class Rectangle {
+            constructor(length, width) {
+                this.length = length;
+                this.width = width;
+            }
+
+            getArea() {
+                return this.length * this.width;
+            }
+
+            getPerimeter() {
+                return 2 * this.length + this.width;
+            }
+        }
+
+        let rectangle = new Rectangle(6, 3);
+        let area = rectangle.getArea();
+        let perimeter = rectangle.getPerimeter();
+
+        alert(`S = ${area}; P = ${perimeter}`);
+
+        let canvas = document.getElementById("myCanvas");
+        let ctx = canvas.getContext("2d");
+        ctx.fillStyle = "black";
+        ctx.fillRect(50, 50, 200, 100);
+    </script>
+</body>
+</html>
