@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input id="name" placeholder="Enter name">
+<button onclick="addNewStudent()">Add new student</button><br>
+<span>Số lượng: </span><span id="soLuong"></span><br>
+<div id="result"></div>
+<script>
+    let studentList = ["Nguyen Van Nam", "Nguyen Van B", "Nguyen Van C"];
+    display(studentList, "result1");
+
+    function addNewStudent() {
+        let newStudent = document.getElementById("name").value;
+        if (newStudent !== "") {
+            studentList.push(newStudent);
+        } else {
+            alert("Yêu cầu nhập");
+        }
+        display(studentList);
+        document.getElementById("name").value = "";
+    }
+    function deleteStudent(index){
+        let conf = confirm("Bạn có muốn xóa sinh viên tên : " + studentList[index] + "?");
+        if(conf){
+            studentList.splice(index,1);
+        }
+        display(studentList);
+    }
+
+    function display(list) {
+        let tableString = `<table border="1" style="...">
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>`;
+        for (let i = 0; i < list.length; i++) {
+            tableString += `<tr>
+                                <td>${i + 1}</td>
+                                <td>${list[i]}</td>
+                                <td><button onclick="editStudent(${i})">Edit</button></td>
+                                <td><button onclick="deleteStudent(${i})">Delete</button></td>
+                            </tr>`;
+        }
+        document.getElementById("result").innerHTML = tableString;
+        document.getElementById("soLuong").innerHTML = studentList.length;
+    }
+    function editStudent(index){
+        studentList[index] = prompt(studentList[index] + ". Nhập vào tên cần sửa ");
+        display(studentList);
+    }
+</script>
+</body>
+</html>

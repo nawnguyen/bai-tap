@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let numbString = ["khong", "mot", "hai", "ba", "bon", "nam", "sau", "bay", "tam", "chin"];
+    let array = [];
+    let returnArr = [];
+    let number = prompt("Nhap vao mot day so");
+    array = number.split('');
+
+    for (let i = 0; i < array.length; i++) {
+        let numb = array[i];
+        let numbStr = numbString[numb];
+        returnArr.push(numbStr);
+    }
+    alert(returnArr);
+</script>
+</body>
+</html>

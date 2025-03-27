@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    let money = +prompt("Nhap vao tong chi tieu");
+
+    function get(spentAmount) {
+        if (money < 100) {
+            return {
+                rank: "Bronze",
+                discount: "No discount",
+                freeShipping: "No free ship",
+                gift: "No gift"
+            }
+        } else if (spentAmount >= 1000) {
+            return {
+                rank: "Platinum",
+                discount: "20%",
+                freeShipping: "free ship",
+                gift: "gift"
+            }
+        } else if (money >= 500) {
+            return {
+                rank: "Gold",
+                discount: "10%",
+                freeShipping: "free ship",
+                gift: "gift"
+            }
+        } else if (money >= 100) {
+            return {
+                rank: "Silver",
+                discount: "5%",
+                freeShipping: "No free ship",
+                gift: "No gift"
+            }
+        }
+    }
+
+    let result = get(money);
+    alert("Rank: " + result.rank + "\n" + "Discount: " + result.discount + "\n" + "Free ship: " + result.freeShipping + "\n" + "Gift: " + result.gift);
+</script>
+</body>
+</html>
