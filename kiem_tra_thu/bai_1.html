@@ -1,10 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<script>
+    let number;
+    do {
+        number = +prompt("Nhập độ dài của mảng");
+    } while (number <= 0 && number > 50)
+    let sum = 0;
+
+    let array = new Array(number);
+    for (let i = 0; i < array.length; i++) {
+        array[i] = +prompt('Nhap so n: ');
+    }
+    for (let i = 0; i < array.length; i++) {
+        if (i % 2 === 0) {
+            sum += array[i];
+        } else {
+            sum -= array[i];
+        }
+    }
+
+    document.write(array + "<br>");
+    document.write("Ket qua:" + sum);
+
+</script>
 </body>
 </html>
+

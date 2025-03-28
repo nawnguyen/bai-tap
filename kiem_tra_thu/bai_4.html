@@ -1,10 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<label for="name"></label><input id="name" placeholder="Enter name computer">
+<button onclick="addNewComputer()">Add new computer</button>
+<br>
+<div id="result"></div>
+<script>
+    let computeList = ["MacBook Air ", "MacBook Pro", "IMac"];
+    display(computeList, "result1");
+
+    function addNewComputer() {
+        let newCompute = document.getElementById("name").value;
+        if (newCompute !== "") {
+            computeList.push(newCompute);
+        } else {
+            alert("Yêu cầu nhập");
+        }
+        display(computeList);
+        document.getElementById("name").value = "";
+    }
+
+    function display(list) {
+        let tableString = `<table border="1" style="...">
+    <tr>
+        <th>STT</th>
+        <th>Tên máy</th>
+        <th>Mã máy</th>
+        <th>Tên hãng sản xuất</th>
+        <th>Giá bán</th>
+    </tr>`;
+        for (let i = 0; i < list.length; i++) {
+            tableString += `<tr>
+                                <td>${i + 1}</td>
+                                <td>${list[i]}</td>
+                                <td>04276</td>
+                                <td>Apple</td>
+                                <td>49.000.000</td>
+                      </tr>`;
+        }
+        document.getElementById("result").innerHTML = tableString;
+    }
+</script>
 </body>
 </html>
