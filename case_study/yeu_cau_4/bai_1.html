@@ -5,6 +5,62 @@
     <title>Title</title>
 </head>
 <body>
+<script>
+    class MaTran {
+        constructor(soHang, soCot) {
+            this.soHang = soHang;
+            this.soCot = soCot;
+            this.duLieu = this.taoMaTran();
+        }
 
+        taoMaTran() {
+            let maTran = [];
+            for (let i = 0; i < this.soHang; i++) {
+                let hang = [];
+                for (let j = 0; j < this.soCot; j++) {
+                    hang.push(this.soNgauNhien(1, 100));
+                }
+                maTran.push(hang);
+            }
+            return maTran;
+        }
+
+        soNgauNhien(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        tongSoChan() {
+            let tong = 0;
+            for (let i = 0; i < this.soHang; i++) {
+                for (let j = 0; j < this.soCot; j++) {
+                    if (this.duLieu[i][j] % 2 === 0) {
+                        tong += this.duLieu[i][j];
+                    }
+                }
+            }
+            return tong;
+        }
+
+        hienThiMaTran() {
+            let chuoiMaTran = "Ma trận:\n";
+            for (let i = 0; i < this.soHang; i++) {
+                chuoiMaTran += this.duLieu[i].join(" ") + "\n";
+            }
+            alert(chuoiMaTran);
+        }
+    }
+
+    let soHang = parseInt(prompt("Nhập số hàng:"));
+    let soCot = parseInt(prompt("Nhập số cột:"));
+
+    if (isNaN(soHang) || isNaN(soCot) || soHang <= 0 || soCot <= 0) {
+        alert("Vui lòng nhập số nguyên dương hợp lệ!");
+    } else {
+        let maTran = new MaTran(soHang, soCot);
+        maTran.hienThiMaTran();
+        let tongChan = maTran.tongSoChan();
+        alert(`Tổng các số chẵn trong ma trận: ${tongChan}`);
+    }
+</script>
 </body>
 </html>
