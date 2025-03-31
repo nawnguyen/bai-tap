@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Xổ Số CodeGym</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .ticket-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .number-circle {
+            width: 60px;
+            height: 60px;
+            border: 1px solid #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+        button {
+            padding: 8px 15px;
+            margin: 5px;
+            font-size: 14px;
+        }
+        .message-box {
+            border: 1px solid #000;
+            padding: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1 style="text-align: center;">Xổ Số CodeGym</h1>
+
+<div class="ticket-row" id="ticketRow">
+</div>
+
+<div class="controls">
+    <button onclick="app.chonSoThuCong()">Chọn số thủ công</button>
+    <button onclick="app.chonSoNgauNhien()">Chọn số ngẫu nhiên</button>
+    <button id="hoanTatBtn" onclick="app.hoanTat()" disabled>Hoàn tất</button>
+</div>
+
+<div class="message-box" id="messageBox">
+    <span id="messageText">1. Chọn số thủ công 2. Chọn số ngẫu nhiên</span>
+</div>
+
+<div class="result" id="resultSection" style="display: none;">
+    <h3>Kết Quả Xổ Số</h3>
+    <p id="resultContent"></p>
+    <button onclick="app.reset()">Chơi lại</button>
+</div>
+
+<script>
+    class VeSo {
+        constructor() {
+            this.daySo = Array(6).fill(null);
+            this.daHoanTat = false;
+        }
+
+        chonSoNgauNhien() {
+            for (let i = 0; i < 6; i++) {
+                if (this.daySo[i] === null) {
+                    let so;
+                    do {
+                        so = Math.floor(Math.random() * 100);
+                    } while (this.daySo.includes(so));
+                    this.daySo[i] = so;
+                }
+            }
+            this.kiemTraHoanTat();
+            return this.daySo;
+        }
+
+        chonSoThuCong(viTri) {
+            let so = prompt(`Nhập số từ 0-99 cho ô số ${viTri + 1}:`, "");
+            if (so !== null) {
+                let soNum = parseInt(so);
+                if (!isNaN(soNum) && soNum >= 0 && soNum <= 99) {
+                    if (this.daySo.includes(soNum)) {
+                        alert("Số này đã được chọn, vui lòng chọn số khác!");
+                        return false;
+                    }
+                    this.daySo[viTri] = soNum;
+                    this.kiemTraHoanTat();
+                    return true;
+                } else {
+                    alert("Vui lòng nhập số từ 0 đến 99!");
+                    return false;
+                }
+            }
+            return false;
+        }
+
+        kiemTraHoanTat() {
+            this.daHoanTat = this.daySo.every(so => so !== null);
+        }
+    }
+
+    class HeThongXoSo {
+        constructor() {
+            this.soTrungThuong = this.taoSoTrungThuong();
+            this.giaTriGiaiThuong = {
+                "Giải nhất": 10000000,
+                "Giải nhì": 5000000,
+                "Giải khuyến khích": 1000000
+            };
+        }
+
+        taoSoTrungThuong() {
+            let daySo = [];
+            while (daySo.length < 6) {
+                let so = Math.floor(Math.random() * 100);
+                if (!daySo.includes(so)) {
+                    daySo.push(so);
+                }
+            }
+            return daySo;
+        }
+
+        kiemTraTrungThuong(daySoVe) {
+            if (this.soTrungThuong.every((so, index) => so === daySoVe[index])) {
+                return "Giải nhất";
+            }
+
+            let soCuoiVe = daySoVe.slice(1);
+            let soCuoiTrung = this.soTrungThuong.slice(1);
+            if (soCuoiVe.every((so, index) => so === soCuoiTrung[index])) {
+                return "Giải nhì";
+            }
+
+            let baSoCuoiVe = daySoVe.slice(3);
+            let baSoCuoiTrung = this.soTrungThuong.slice(3);
+            if (baSoCuoiVe.every((so, index) => so === baSoCuoiTrung[index])) {
+                return "Giải khuyến khích";
+            }
+
+            return null;
+        }
+    }
+
+    class XoSoApp {
+        constructor() {
+            this.danhSachVe = [];
+            this.heThong = new HeThongXoSo();
+            this.veHienTai = null;
+            this.khoiTao();
+        }
+
+        khoiTao() {
+            this.taoVeMoi();
+            this.renderTicketRow();
+            this.capNhatMessage("1. Chọn số thủ công 2. Chọn số ngẫu nhiên");
+        }
+
+        taoVeMoi() {
+            if (this.danhSachVe.length >= 4) {
+                alert("Bạn đã mua tối đa 4 vé!");
+                return false;
+            }
+            this.veHienTai = new VeSo();
+            this.danhSachVe.push(this.veHienTai);
+            return true;
+        }
+
+        renderTicketRow() {
+            let row = document.getElementById('ticketRow');
+            row.innerHTML = '';
+
+            for (let i = 0; i < 6; i++) {
+                let circle = document.createElement('div');
+                circle.className = 'number-circle';
+                circle.textContent = this.veHienTai.daySo[i] !== null ? this.veHienTai.daySo[i] : '';
+                circle.onclick = () => this.chonSoThuCong(i);
+                row.appendChild(circle);
+            }
+
+            document.getElementById('hoanTatBtn').disabled = !this.veHienTai.daHoanTat;
+        }
+
+        chonSoThuCong(viTri) {
+            if (this.veHienTai.chonSoThuCong(viTri)) {
+                this.renderTicketRow();
+                this.capNhatMessage("Click vào ô tròn để chọn số");
+            }
+        }
+
+        chonSoNgauNhien() {
+            this.veHienTai.chonSoNgauNhien();
+            this.renderTicketRow();
+            this.capNhatMessage("Đã tạo số ngẫu nhiên");
+        }
+
+        hoanTat() {
+            if (this.veHienTai.daHoanTat) {
+                this.kiemTraKetQua();
+            }
+        }
+
+        kiemTraKetQua() {
+            let ketQua = this.heThong.kiemTraTrungThuong(this.veHienTai.daySo);
+            let resultDiv = document.getElementById('resultSection');
+            let contentDiv = document.getElementById('resultContent');
+
+            let resultText = `Số của bạn: ${this.veHienTai.daySo.join(" - ")}<br>`;
+            resultText += `Số trúng thưởng: ${this.heThong.soTrungThuong.join(" - ")}<br><br>`;
+
+            if (ketQua) {
+                resultText += `Chúc mừng bạn đã trúng ${ketQua}!<br>`;
+                resultText += `Giá trị giải thưởng: ${this.heThong.giaTriGiaiThuong[ketQua].toLocaleString()} VNĐ`;
+            } else {
+                resultText += "Chúc bạn may mắn lần sau!";
+            }
+
+            contentDiv.innerHTML = resultText;
+            resultDiv.style.display = 'block';
+        }
+
+        reset() {
+            this.danhSachVe = [];
+            this.heThong = new HeThongXoSo();
+            this.taoVeMoi();
+            this.renderTicketRow();
+            document.getElementById('resultSection').style.display = 'none';
+            this.capNhatMessage("1. Chọn số thủ công 2. Chọn số ngẫu nhiên");
+        }
+
+        capNhatMessage(message) {
+            document.getElementById('messageText').textContent = message;
+        }
+    }
+
+    let app = new XoSoApp();
+</script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class KiemTraEmail {
+        constructor(email) {
+            this.email = email;
+        }
+
+        laEmailHopLe() {
+            if (this.email.length < 6)
+                return false;
+
+            let phanChia = this.email.split('@');
+            if (phanChia.length !== 2)
+                return false;
+
+            let [tenTruocAcong, mienSauAcong] = phanChia;
+            if (!tenTruocAcong || !mienSauAcong)
+                return false;
+
+            if (!isNaN(tenTruocAcong[0]))
+                return false;
+
+            for (let i = 0; i < tenTruocAcong.length; i++) {
+                let kyTu = tenTruocAcong[i];
+                if (!((kyTu >= 'a' && kyTu <= 'z') || (kyTu >= 'A' && kyTu <= 'Z') || (kyTu >= '0' && kyTu <= '9'))) {
+                    return false;
+                }
+            }
+
+            let tachMien = mienSauAcong.split('.');
+            if (tachMien.length !== 2)
+                return false;
+
+            let [tenMien, duoiMien] = tachMien;
+
+            if (tenMien.length < 3 || tenMien.length > 10 || duoiMien.length < 3 || duoiMien.length > 10)
+                return false;
+
+            for (let i = 0; i < tenMien.length; i++) {
+                let kyTu = tenMien[i];
+                if (!(kyTu >= 'a' && kyTu <= 'z'))
+                    return false;
+            }
+
+            for (let i = 0; i < duoiMien.length; i++) {
+                let kyTu = duoiMien[i];
+                if (!(kyTu >= 'a' && kyTu <= 'z'))
+                    return false;
+            }
+
+            return true;
+        }
+    }
+
+    let danhSachEmail = ["test@gmail.com", "123abc@gmail.com", "a@bc.d", "testEmail@gmail.net"];
+    for (let i = 0; i < danhSachEmail.length; i++) {
+        let email = danhSachEmail[i];
+        let kiemTra = new KiemTraEmail(email);
+        alert(`Email: ${email} -> Hợp lệ: ${kiemTra.laEmailHopLe()}`);
+    }
+
+
+</script>
+</body>
+</html>

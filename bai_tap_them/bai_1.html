@@ -6,10 +6,10 @@
 </head>
 <body>
 <script>
-    let length = +prompt("Nhap vao do dai cua mang");
-    let array = new Array(length);
-    for (let i = 0; i < array.length; i++) {
-        array[i] = +prompt("Nhap so vao mang");
+    let lengthArr = +prompt("nhap do dai mang");
+    let array = [];
+    for(let i = 0; i < lengthArr; i++){
+        array[i] = +prompt("nhap gia tri cua mang");
     }
     alert(array);
 </script>

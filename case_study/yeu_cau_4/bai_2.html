@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class TimSoNguyenTo {
+        constructor(mangHaiChieu) {
+            this.mangHaiChieu = mangHaiChieu;
+        }
+
+        laSoNguyenTo(n) {
+            if (n < 2) return false;
+            for (let i = 2; i <= Math.sqrt(n); i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        lietKeVaDemSoNguyenTo() {
+            let danhSachSoNguyenTo = [];
+            let dem = 0;
+            for (let i = 0; i < this.mangHaiChieu.length; i++) {
+                for (let j = 0; j < this.mangHaiChieu[i].length; j++) {
+                    if (this.laSoNguyenTo(this.mangHaiChieu[i][j])) {
+                        danhSachSoNguyenTo.push(this.mangHaiChieu[i][j]);
+                        dem++;
+                    }
+                }
+            }
+            return {danhSachSoNguyenTo, dem};
+        }
+    }
+
+    let mang = [
+        [3, 5, 7],
+        [2, 8, 1],
+        [9, 4, 6]
+    ];
+
+    let timSoNguyenTo = new TimSoNguyenTo(mang);
+    let ketQua = timSoNguyenTo.lietKeVaDemSoNguyenTo();
+    alert("Danh sách số nguyên tố: " + ketQua.danhSachSoNguyenTo);
+    alert("Số lượng số nguyên tố: " + ketQua.dem);
+</script>
+</body>
+</html>

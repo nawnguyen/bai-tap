@@ -6,6 +6,63 @@
 </head>
 <body>
 <script>
+    class NumberReader {
+        constructor(num) {
+            this.num = num;
+            this.ones = ["không", "một", "hai", "ba", "bốn", "năm", "sáu", "bảy", "tám", "chín"];
+            this.tens = ["", "mười", "hai mươi", "ba mươi", "bốn mươi", "năm mươi", "sáu mươi", "bảy mươi", "tám mươi", "chín mươi"];
+        }
+
+        validate() {
+            return Number.isInteger(this.num) && this.num >= 0 && this.num < 999;
+        }
+
+        splitNumber() {
+            return {
+                hundred: Math.floor(this.num / 100),
+                ten: Math.floor((this.num % 100) / 10),
+                one: this.num % 10
+            };
+        }
+
+
+        convertToWords() {
+            if (!this.validate()) {
+                return "Vui lòng nhập số nguyên dương nhỏ hơn 999";
+            }
+
+            const { hundred, ten, one } = this.splitNumber();
+            let result = "";
+
+            if (hundred > 0) {
+                result += this.ones[hundred] + " trăm";
+                if (ten === 0 && one > 0) {
+                    result += " linh";
+                }
+            }
+
+            if (ten > 0) {
+                result += (result ? " " : "") + this.tens[ten];
+            }
+
+            if (one > 0) {
+                if (ten > 1) {
+                    result += (one === 5 ? " lăm" : " " + this.ones[one]);
+                } else if (ten === 1) {
+                    result += (one === 5 ? " lăm" : one === 1 ? " một" : " " + this.ones[one]);
+                } else {
+                    result += " " + this.ones[one];
+                }
+            }
+
+            return result.trim();
+        }
+    }
+
+    let input = prompt("Nhập số nguyên dương nhỏ hơn 999: ");
+    let number = parseInt(input);
+    let reader = new NumberReader(number);
+    alert(reader.convertToWords());
 
 </script>
 </body>

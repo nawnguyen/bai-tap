@@ -6,38 +6,60 @@
 </head>
 <body>
 <script>
-  let check = true;
-while (check){
-  let menu = +prompt(
-          "----------MENU----------\n"+
-          "Nhập số để đặt món\n"+
-          "1. Coffee\n"+
-          "2. Cam vắt\n"+
-          "3. Nước ép cà rốt\n"+
-          "4. Nước ép cà chua\n"+
-          "5. Nước lọc\n"+
-          "6. Nước dừa\n"+
-          "7. Thoát gọi món\n"
-  );
-switch(menu){
-  case 1:
+    class Drink {
+        constructor(name, price) {
+            this.name = name;
+            this.price = price;
+        }
+    }
 
-    break;
-  case 2:
+    let drinks = {
+        1: new Drink("Coffee", 20000),
+        2: new Drink("Cam vắt", 25000),
+        3: new Drink("Nước ép cà rốt", 22000),
+        4: new Drink("Nước ép cà chua", 23000),
+        5: new Drink("Nước lọc", 10000),
+        6: new Drink("Nước dừa", 30000)
+    };
 
-  case 3:
+    function getMenu() {
+        let menuText = "----------MENU----------\nNhập số để đặt món\n";
 
-  case 4:
+        for (let i = 1; i <= 6; i++) {
+            let drink = drinks[i];
+            menuText += `${i}. ${drink.name} - ${drink.price}đ\n`;
+        }
 
-  case 5:
+        menuText += "7. Thoát gọi món\n";
+        return menuText;
+    }
 
-  case 6:
+    function orderDrink() {
+        let check = true;
+        while (check) {
+            let menu = +prompt(getMenu());
 
-  case 7:
+            if (menu === 7) {
+                alert("Xác nhận thoát ?");
+                check = false;
+                break;
+            }
 
-}
+            if (drinks[menu]) {
+                let quantity = +prompt(`Nhập số lượng cho ${drinks[menu].name}:`);
+                if (quantity > 0) {
+                    let total = drinks[menu].price * quantity;
+                    alert(`Tổng số tiền bạn cần trả là: ${total}đ`);
+                } else {
+                    alert("Số lượng không hợp lệ!");
+                }
+            } else {
+                alert("Lựa chọn không hợp lệ, vui lòng thử lại!");
+            }
+        }
+    }
 
-}
+    orderDrink();
 </script>
 </body>
 </html>

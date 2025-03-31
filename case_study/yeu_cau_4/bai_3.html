@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class TimGiaTriMinMax {
+        constructor(mangHaiChieu) {
+            this.mangHaiChieu = mangHaiChieu;
+        }
+
+        timGiaTriLonNhat() {
+            let max = this.mangHaiChieu[0][0];
+            for (let i = 0; i < this.mangHaiChieu.length; i++) {
+                for (let j = 0; j < this.mangHaiChieu[i].length; j++) {
+                    if (this.mangHaiChieu[i][j] > max) {
+                        max = this.mangHaiChieu[i][j];
+                    }
+                }
+            }
+            return max;
+        }
+
+        timGiaTriNhoNhat() {
+            let min = this.mangHaiChieu[0][0];
+            for (let i = 0; i < this.mangHaiChieu.length; i++) {
+                for (let j = 0; j < this.mangHaiChieu[i].length; j++) {
+                    if (this.mangHaiChieu[i][j] < min) {
+                        min = this.mangHaiChieu[i][j];
+                    }
+                }
+            }
+            return min;
+        }
+    }
+
+    let arr = [
+        [3, 5, 7],
+        [2, 8, 1],
+        [9, 4, 6]
+    ];
+
+    let timGiaTri = new TimGiaTriMinMax(arr);
+    alert("Giá trị lớn nhất: " + timGiaTri.timGiaTriLonNhat());
+    alert("Giá trị nhỏ nhất: " + timGiaTri.timGiaTriNhoNhat());
+</script>
+</body>
+</html>

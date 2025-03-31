@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class NhomTuTuongDong {
+        constructor(danhSachTu) {
+            this.danhSachTu = danhSachTu;
+        }
+
+        nhomTuCungKyTu() {
+            let nhomTu = {};
+
+            for (let tu of this.danhSachTu) {
+                let khoaSapXep = tu.split('').sort().join('');
+                if (!(khoaSapXep in nhomTu)) {
+                    nhomTu[khoaSapXep] = [];
+                }
+                nhomTu[khoaSapXep].push(tu);
+            }
+
+            let ketQua = [];
+            for (let khoa in nhomTu) {
+                ketQua.push(nhomTu[khoa]);
+            }
+
+            return ketQua;
+        }
+    }
+
+    let danhSach1 = ["eat", "tea", "tan", "ate", "nat", "bat"];
+    let danhSach2 = ["hello", "world", "dlrow", "ehllo"];
+
+    let nhom1 = new NhomTuTuongDong(danhSach1);
+    alert(nhom1.nhomTuCungKyTu());
+
+    let nhom2 = new NhomTuTuongDong(danhSach2);
+    alert(nhom2.nhomTuCungKyTu());
+</script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Danh bạ</title>
+</head>
+<body>
+<div id="result"></div>
+
+<script>
+    class DanhBa {
+        constructor(soDienThoai, tenDanhBa, diaChi) {
+            this.soDienThoai = soDienThoai;
+            this.tenDanhBa = tenDanhBa;
+            this.diaChi = diaChi;
+        }
+    }
+
+    let danhBa = {
+        1: new DanhBa("0368754753", "Nguyen Van A", "Làng Lá"),
+        2: new DanhBa("0368785967", "Nguyen Van B", "Làng Gốm"),
+        3: new DanhBa("0184669463", "Nguyen Van C", "Làng Chài"),
+        4: new DanhBa("0368674648", "Nguyen Van X", "Làng Cây"),
+        5: new DanhBa("0141263855", "Nguyen Van Y", "Làng Cỏ")
+    };
+
+    function xoaDanhBa(index) {
+        let conf = confirm("Bạn có muốn xóa danh bạ tên: " + danhBa[index].tenDanhBa + "?");
+        if (conf) {
+            delete danhBa[index];
+        }
+        display(danhBa);
+    }
+
+    function display(list) {
+        let tableString = `<table border="1">
+      <tr>
+          <th>Tên danh bạ</th>
+          <th>Số điện thoại</th>
+          <th>Địa chỉ</th>
+          <th>Hành động</th>
+      </tr>`;
+
+        for (let i = 0; i < list.length; i++) {
+            if (list[i]) {
+                tableString += `<tr>
+                              <td>${list[i].tenDanhBa}</td>
+                              <td>${list[i].soDienThoai}</td>
+                              <td>${list[i].diaChi}</td>
+                              <td><button onclick="xoaDanhBa(${i})">Xóa</button></td>
+                          </tr>`;
+            }
+        }
+
+        document.getElementById("result").innerHTML = tableString;
+        display(danhBa);
+    }
+
+    display(danhBa);
+
+</script>
+</body>
+</html>

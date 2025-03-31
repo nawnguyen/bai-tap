@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class TimChuoiConTangDan {
+        constructor(chuoi) {
+            this.chuoi = chuoi;
+        }
+
+        layChuoiConDaiNhat() {
+            if (this.chuoi.length === 0)
+                return "";
+
+            let chuoiDaiNhat = "";
+            let chuoiHienTai = this.chuoi[0];
+
+            for (let i = 1; i < this.chuoi.length; i++) {
+                if (this.chuoi[i] > this.chuoi[i - 1]) {
+                    chuoiHienTai += this.chuoi[i];
+                } else {
+                    if (chuoiHienTai.length > chuoiDaiNhat.length) {
+                        chuoiDaiNhat = chuoiHienTai;
+                    }
+                    chuoiHienTai = this.chuoi[i];
+                }
+            }
+
+            if (chuoiHienTai.length > chuoiDaiNhat.length) {
+                chuoiDaiNhat = chuoiHienTai;
+            }
+
+            return chuoiDaiNhat;
+        }
+    }
+
+    let chuoi = "abefaefghedcb";
+    let timChuoi = new TimChuoiConTangDan(chuoi);
+    alert(timChuoi.layChuoiConDaiNhat());
+
+</script>
+</body>
+</html>

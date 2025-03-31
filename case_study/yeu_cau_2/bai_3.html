@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    class DanhSachPhanSo {
+        constructor(tuSo, mauSo) {
+            this.tuSo = tuSo;
+            this.mauSo = mauSo;
+        }
+
+        timChiSoPhanSoLonNhat() {
+            let chiSoMax = 0;
+            let giaTriMax = this.tuSo[0] / this.mauSo[0];
+
+            for (let i = 1; i < this.tuSo.length; i++) {
+                let giaTriHienTai = this.tuSo[i] / this.mauSo[i];
+                if (giaTriHienTai > giaTriMax) {
+                    giaTriMax = giaTriHienTai;
+                    chiSoMax = i;
+                }
+            }
+            return chiSoMax;
+        }
+    }
+
+    let tuSo = [5, 2, 5];
+    let mauSo = [6, 3, 4];
+    let danhSachPhanSo = new DanhSachPhanSo(tuSo, mauSo);
+    let ketQua = danhSachPhanSo.timChiSoPhanSoLonNhat();
+
+    document.write("Chỉ số của phân số lớn nhất là:" + ketQua);
+
+</script>
+</body>
+</html>
